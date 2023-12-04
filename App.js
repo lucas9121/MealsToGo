@@ -1,10 +1,5 @@
-import RestaurantsScreen from './src/features/restaurants/screens/restaurant.screens';
+import RestaurantsScreen from "./src/features/restaurants/screens/restaurant.screens";
 
 export default function App() {
-
-  return (
-    <RestaurantsScreen />
-  );
+  return <RestaurantsScreen />;
 }
-
-
