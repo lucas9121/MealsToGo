@@ -15,7 +15,7 @@ export const RestaurantInfo = ({ restaurant = {} }) => {
 
   return (
     <Card>
-      <Card.Cover source={{ uri: photos[0] }} />
+      <Card.Cover key={name} source={{ uri: photos[0] }} />
       <Card.Content>
         <Text variant="titleLarge">{name}</Text>
         <Text variant="bodyMedium">{address}</Text>
