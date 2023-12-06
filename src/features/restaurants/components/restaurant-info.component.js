@@ -1,4 +1,4 @@
-import { Text } from "react-native-paper";
+import { Text, Card } from "react-native-paper";
 
 export const RestaurantInfo = ({ restaurant = {} }) => {
   const {
@@ -13,5 +13,13 @@ export const RestaurantInfo = ({ restaurant = {} }) => {
     isClosedTemporarily,
   } = restaurant;
 
-  return <Text>{name}</Text>;
+  return (
+    <Card>
+      <Card.Cover source={{ uri: photos[0] }} />
+      <Card.Content>
+        <Text variant="titleLarge">{name}</Text>
+        <Text variant="bodyMedium">{address}</Text>
+      </Card.Content>
+    </Card>
+  );
 };
