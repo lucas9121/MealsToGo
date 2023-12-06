@@ -1,6 +1,6 @@
 import { Text, Card } from "react-native-paper";
 
-export const RestaurantInfo = ({ restaurant = {} }) => {
+export const RestaurantInfoCard = ({ restaurant = {} }) => {
   const {
     name = "Some Restaurant",
     icon,
