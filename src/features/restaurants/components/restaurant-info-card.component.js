@@ -1,4 +1,24 @@
 import { Text, Card } from "react-native-paper";
+import styled from "styled-components/native";
+
+const CardCover = styled(Card.Cover)`
+  padding: ${(props) => props.theme.space[3]};
+`;
+
+const CardContent = styled(Card.Content)`
+  padding: ${(props) => props.theme.space[2]} ${(props) => props.theme.space[3]};
+`;
+
+const Title = styled(Text)`
+  font-family: ${(props) => props.theme.fonts.heading};
+  font-size: ${(props) => props.theme.fontSizes.title};
+  padding-bottom: ${(props) => props.theme.space[2]};
+`;
+
+const Address = styled(Text)`
+  font-family: ${(props) => props.theme.fonts.body};
+  font-size: ${(props) => props.theme.fontSizes.caption};
+`;
 
 export const RestaurantInfoCard = ({ restaurant = {} }) => {
   const {
@@ -15,11 +35,11 @@ export const RestaurantInfoCard = ({ restaurant = {} }) => {
 
   return (
     <Card>
-      <Card.Cover key={name} source={{ uri: photos[0] }} />
-      <Card.Content>
-        <Text variant="titleLarge">{name}</Text>
-        <Text variant="bodyMedium">{address}</Text>
-      </Card.Content>
+      <CardCover key={name} source={{ uri: photos[0] }} />
+      <CardContent>
+        <Title>{name}</Title>
+        <Address>{address}</Address>
+      </CardContent>
     </Card>
   );
 };
