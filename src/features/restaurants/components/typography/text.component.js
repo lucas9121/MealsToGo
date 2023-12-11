@@ -5,8 +5,13 @@ const defaultTextStyles = (theme) => `
   font-weight: ${theme.fontWeights.regular};
   color: ${theme.colors.text.primary};
   flex-wrap: wrap;
-  margint-top: 0px;
+  margin-top: 0px;
   margin-bottom: 0px;
+`;
+
+const title = (theme) => `
+    font-family: ${theme.fonts.heading};
+    font-size: ${theme.fontSizes.title};
 `;
 
 const body = (theme) => `
@@ -19,6 +24,8 @@ const hint = (theme) => `
 
 const error = (theme) => `
     color: ${theme.colors.text.error};
+    font-family: ${theme.fonts.bodyBold};
+    font-size: ${theme.fontSizes.caption};
 `;
 
 const caption = (theme) => `
@@ -33,6 +40,7 @@ const label = (theme) => `
 `;
 
 const variants = {
+  title,
   body,
   label,
   caption,
@@ -45,3 +53,7 @@ export const Text = styled.Text`
   /* get the right function from the variants object */
   ${({ variant, theme }) => variants[variant](theme)}
 `;
+
+Text.defaultProps = {
+  variant: "body",
+};

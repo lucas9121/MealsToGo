@@ -1,10 +1,12 @@
 import styled from "styled-components/native";
-import { View, Text, Image } from "react-native";
+import { View, Image } from "react-native";
 import { Card } from "react-native-paper";
 import { SvgXml } from "react-native-svg";
 
 import star from "../../../../assets/star";
 import open from "../../../../assets/open";
+import { Text } from "./typography/text.component";
+import { Spacer } from "./spacer/spacer.component";
 
 const CardCover = styled(Card.Cover)`
   padding: ${(props) => props.theme.space[3]};
@@ -14,18 +16,12 @@ const CardContent = styled(Card.Content)`
   padding: ${(props) => props.theme.space[2]} ${(props) => props.theme.space[3]};
 `;
 
-const Title = styled(Text)`
-  font-family: ${(props) => props.theme.fonts.heading};
-  font-size: ${(props) => props.theme.fontSizes.title};
-  padding-bottom: ${(props) => props.theme.space[2]};
-`;
-
 const Address = styled(Text)`
   font-family: ${(props) => props.theme.fonts.body};
   font-size: ${(props) => props.theme.fontSizes.caption};
 `;
 
-const Icons = styled(View)`
+const Section = styled(View)`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
@@ -43,9 +39,9 @@ const Open = styled(View)`
   gap: 8px;
 `;
 
-const Closed = styled(Text)`
-  font-family: ${(props) => props.theme.fonts.bodyBold};
-  font-size: ${(props) => props.theme.fontSizes.caption};
+const Icon = styled(Image)`
+  width: 20px;
+  height: 20px;
 `;
 
 export const RestaurantInfoCard = ({ restaurant = {} }) => {
@@ -67,8 +63,9 @@ export const RestaurantInfoCard = ({ restaurant = {} }) => {
     <Card>
       <CardCover key={name} source={{ uri: photos[0] }} />
       <CardContent>
-        <Title>{name}</Title>
-        <Icons>
+        <Text variant="title">{name}</Text>
+        <Spacer position="bottom" size="medium"></Spacer>
+        <Section>
           <Rating>
             {ratingArray.map((ele, idx) => (
               <SvgXml key={idx} xml={star} width={20} height={20} />
@@ -76,14 +73,12 @@ export const RestaurantInfoCard = ({ restaurant = {} }) => {
           </Rating>
           <Open>
             {isClosedTemporarily && (
-              <Closed variant="label" style={{ color: "red" }}>
-                CLOSED TEMPORARILY
-              </Closed>
+              <Text variant="error">CLOSED TEMPORARILY</Text>
             )}
             {isOpenNow && <SvgXml xml={open} width={20} height={20} />}
-            <Image style={{ width: 20, height: 20 }} source={{ uri: icon }} />
+            <Icon source={{ uri: icon }} />
           </Open>
-        </Icons>
+        </Section>
         <Address>{address}</Address>
       </CardContent>
     </Card>
