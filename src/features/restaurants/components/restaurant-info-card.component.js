@@ -1,5 +1,3 @@
-import styled from "styled-components/native";
-import { View, Image } from "react-native";
 import { Card } from "react-native-paper";
 import { SvgXml } from "react-native-svg";
 
@@ -8,41 +6,15 @@ import open from "../../../../assets/open";
 import { Text } from "./typography/text.component";
 import { Spacer } from "./spacer/spacer.component";
 
-const CardCover = styled(Card.Cover)`
-  padding: ${(props) => props.theme.space[3]};
-`;
-
-const CardContent = styled(Card.Content)`
-  padding: ${(props) => props.theme.space[2]} ${(props) => props.theme.space[3]};
-`;
-
-const Address = styled(Text)`
-  font-family: ${(props) => props.theme.fonts.body};
-  font-size: ${(props) => props.theme.fontSizes.caption};
-`;
-
-const Section = styled(View)`
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  padding: ${(props) => props.theme.space[1]} 0;
-`;
-
-const Rating = styled(View)`
-  flex-direction: row;
-  align-items: center;
-`;
-
-const Open = styled(View)`
-  flex-direction: row;
-  align-items: center;
-  gap: 8px;
-`;
-
-const Icon = styled(Image)`
-  width: 20px;
-  height: 20px;
-`;
+import {
+  CardCover,
+  CardContent,
+  Section,
+  Address,
+  Rating,
+  Open,
+  Icon,
+} from "./restaurant-info-card.styles";
 
 export const RestaurantInfoCard = ({ restaurant = {} }) => {
   const {
