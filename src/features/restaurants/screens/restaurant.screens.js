@@ -1,8 +1,11 @@
 import { useState } from "react";
 import styled from "styled-components/native";
-import { SafeAreaView, StatusBar } from "react-native";
+import { SafeAreaView, StatusBar, FlatList } from "react-native";
 import { Searchbar } from "react-native-paper";
+
 import { RestaurantInfoCard } from "../components/restaurant-info-card.component";
+import { Spacer } from "../components/spacer/spacer.component";
+import { colors } from "../../../infrastructure/theme/colors";
 
 const SafeArea = styled(SafeAreaView)`
   flex: 1;
@@ -22,6 +25,11 @@ const ListContainer = styled.View`
   padding: ${(props) => props.theme.space[3]};
 `;
 
+const restaurantAPI = Array.from(new Array(15));
+restaurantAPI.forEach((ele, idx) => {
+  restaurantAPI[idx] = { name: idx };
+});
+
 export default function RestaurantsScreen() {
   const [searchQueary, setSearchQuery] = useState("");
 
@@ -36,9 +44,19 @@ export default function RestaurantsScreen() {
           value={searchQueary}
         />
       </SearchContainer>
-      <ListContainer>
-        <RestaurantInfoCard />
-      </ListContainer>
+      <FlatList
+        data={restaurantAPI}
+        renderItem={() => (
+          <Spacer position="bottom" size="large">
+            <RestaurantInfoCard />
+          </Spacer>
+        )}
+        keyExtractor={(item) => item.name}
+        contentContainerStyle={{
+          backgroundColor: `${colors.bg.secondary}`,
+          padding: 16,
+        }}
+      />
     </SafeArea>
   );
 }
