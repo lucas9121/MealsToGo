@@ -1,9 +1,12 @@
-import { View, Text } from "react-native";
+import { Text } from "react-native";
+import { SafeArea } from "../../../components/utility/safe-area.component";
 
 export default function MapScreen() {
   return (
-    <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+    <SafeArea
+      style={{ flex: 1, justifyContent: "center", alignItems: "center" }}
+    >
       <Text>Map!</Text>
-    </View>
+    </SafeArea>
   );
 }
