@@ -1,9 +1,22 @@
-const { exec } = require("shell-exec");
+// const fs = require('fs');
+// const git = require('git');
+const { execSync } = require('child_process');
 
+const add = () => {
+  execSync('git add .', { stdio: 'inherit' });
+};
 
-const commitMessage = process.argv[2] || "updating code";
-const command = `git add . && git commit -m '${commitMessage}'`;
+const commit = (message) => {
+  execSync(`git commit -m "${message}"`, { stdio: 'inherit' });
+  // git.commit(message);
+};
 
-exec(command)
-  .then((result) => console.log(result))
-  .catch((err) => console.error(err));
+const command = () => {
+  const message = process.argv[2] || "updating code"
+  add()
+  commit(message)
+  console.log(`Received custom message: ${message}`)
+  // const customMessage = process.argv[2]
+}
+
+command()

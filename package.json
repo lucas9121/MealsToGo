@@ -7,7 +7,7 @@
     "android": "expo start --android",
     "ios": "expo start --ios",
     "web": "expo start --web",
-    "gitAddAndCommit": "git add . && git commit -m 'updating code'${npm_config_msg:+ -m \"$npm_config_msg\"}"
+    "gitAddAndCommit": "node scripts/gitAddAndCommit"
   },
   "dependencies": {
     "@expo-google-fonts/lato": "^0.2.3",
