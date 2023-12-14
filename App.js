@@ -15,6 +15,8 @@ import RestaurantsScreen from "./src/features/restaurants/screens/restaurant.scr
 import SettingsScreen from "./src/features/restaurants/screens/settings.screen";
 import MapScreen from "./src/features/restaurants/screens/map.screen";
 
+import { restaurantsRequest } from "./src/services/restaurants/mock/restaurants.service";
+
 const Tab = createBottomTabNavigator();
 
 // will choose icon based on focused
