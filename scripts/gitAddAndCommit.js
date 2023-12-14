@@ -10,10 +10,20 @@ const commit = (message) => (
   execSync(`git commit -m "${message}"`, { stdio: 'inherit' })
 );
 
+const push = (message) => (
+  execSync('git push', { stdio: 'inherit' })
+);
+
 const command = () => {
   const message = process.argv[2] || "updating code"
   add()
   commit(message)
+  push()
 }
 
-command().then(() => console.log(`git updated`)).catch((err) => console.error(err))
+try {
+  command();
+  console.log('Git updated');
+} catch (error) {
+  console.error(error);
+}
