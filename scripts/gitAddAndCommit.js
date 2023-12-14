@@ -10,7 +10,7 @@ const commit = (message) => (
   execSync(`git commit -m "${message}"`, { stdio: 'inherit' })
 );
 
-const push = (message) => (
+const push = () => (
   execSync('git push', { stdio: 'inherit' })
 );
 
