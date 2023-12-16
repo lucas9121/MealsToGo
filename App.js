@@ -14,6 +14,7 @@ import { Ionicons } from "@expo/vector-icons";
 import RestaurantsScreen from "./src/features/restaurants/screens/restaurant.screens";
 import SettingsScreen from "./src/features/restaurants/screens/settings.screen";
 import MapScreen from "./src/features/restaurants/screens/map.screen";
+import { colors } from "./src/infrastructure/theme/colors";
 
 import { RestaurantsContextProvider } from "./src/services/restaurants/mock/restaurants.context";
 
@@ -37,8 +38,8 @@ const createScreenOptions = ({ route }) => ({
     const iconName = getIconName(route, focused);
     return <Ionicons name={iconName} size={size} color={color} />;
   },
-  tabBarActiveTintColor: "tomato",
-  tabBarInactiveTintColor: "gray",
+  tabBarActiveTintColor: colors.ui.blue,
+  tabBarInactiveTintColor: colors.ui.secondary,
 });
 
 export default function App() {
