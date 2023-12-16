@@ -15,8 +15,8 @@ import RestaurantsScreen from "./src/features/restaurants/screens/restaurant.scr
 import SettingsScreen from "./src/features/restaurants/screens/settings.screen";
 import MapScreen from "./src/features/restaurants/screens/map.screen";
 import { colors } from "./src/infrastructure/theme/colors";
-
 import { RestaurantsContextProvider } from "./src/services/restaurants/mock/restaurants.context";
+import { LocationContextProvider } from "./src/services/location/location.context";
 
 const Tab = createBottomTabNavigator();
 
@@ -59,16 +59,18 @@ export default function App() {
   }
   return (
     <ThemeProvider theme={theme}>
-      <RestaurantsContextProvider>
-        {/* anything below can use RestaurantsContext now */}
-        <NavigationContainer>
-          <Tab.Navigator screenOptions={createScreenOptions}>
-            <Tab.Screen name="Restaurants" component={RestaurantsScreen} />
-            <Tab.Screen name="Map" component={MapScreen} />
-            <Tab.Screen name="Settings" component={SettingsScreen} />
-          </Tab.Navigator>
-        </NavigationContainer>
-      </RestaurantsContextProvider>
+      <LocationContextProvider>
+        <RestaurantsContextProvider>
+          {/* anything below can use RestaurantsContext now */}
+          <NavigationContainer>
+            <Tab.Navigator screenOptions={createScreenOptions}>
+              <Tab.Screen name="Restaurants" component={RestaurantsScreen} />
+              <Tab.Screen name="Map" component={MapScreen} />
+              <Tab.Screen name="Settings" component={SettingsScreen} />
+            </Tab.Navigator>
+          </NavigationContainer>
+        </RestaurantsContextProvider>
+      </LocationContextProvider>
     </ThemeProvider>
   );
 }
