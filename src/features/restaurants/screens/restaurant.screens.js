@@ -1,17 +1,13 @@
-import { useState, useContext } from "react";
+import { useContext } from "react";
 import styled from "styled-components/native";
 import { StatusBar, FlatList, Platform } from "react-native";
-import { Searchbar, ActivityIndicator } from "react-native-paper";
 
 import { RestaurantInfoCard } from "../components/restaurant-info-card.component";
 import { Spacer } from "../components/spacer/spacer.component";
 import { SafeArea } from "../../../components/utility/safe-area.component";
 import { RestaurantsContext } from "../../../services/restaurants/mock/restaurants.context";
 import { LoadingComponent } from "../components/loading.component";
-
-const SearchContainer = styled.View`
-  padding: ${(props) => props.theme.space[3]};
-`;
+import { Search } from "../components/search.component";
 
 // attributes function allows me to give specific props to default value, which is Flatlist in this case
 const ListContainer = styled(FlatList).attrs({
@@ -22,9 +18,6 @@ const ListContainer = styled(FlatList).attrs({
 
 export default function RestaurantsScreen() {
   const { isLoading, error, restaurants } = useContext(RestaurantsContext); // popuplates the ammount of restaurants determined in RestaurantsContext array
-  const [searchQueary, setSearchQuery] = useState("");
-
-  const onChangeSearch = (query) => setSearchQuery(query);
 
   return isLoading ? (
     <LoadingComponent />
@@ -33,13 +26,7 @@ export default function RestaurantsScreen() {
       <StatusBar
         barStyle={Platform.OS === "ios" ? "dark-content" : "light-content"}
       />
-      <SearchContainer>
-        <Searchbar
-          placeholder="Search"
-          onChangeText={onChangeSearch}
-          value={searchQueary}
-        />
-      </SearchContainer>
+      <Search />
       <ListContainer
         data={restaurants}
         renderItem={({ item }) => (
