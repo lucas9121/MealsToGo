@@ -15,6 +15,8 @@ import RestaurantsScreen from "./src/features/restaurants/screens/restaurant.scr
 import SettingsScreen from "./src/features/restaurants/screens/settings.screen";
 import MapScreen from "./src/features/restaurants/screens/map.screen";
 
+import { RestaurantsContextProvider } from "./src/services/restaurants/mock/restaurants.context";
+
 const Tab = createBottomTabNavigator();
 
 // will choose icon based on focused
@@ -56,13 +58,16 @@ export default function App() {
   }
   return (
     <ThemeProvider theme={theme}>
-      <NavigationContainer>
-        <Tab.Navigator screenOptions={createScreenOptions}>
-          <Tab.Screen name="Restaurants" component={RestaurantsScreen} />
-          <Tab.Screen name="Map" component={MapScreen} />
-          <Tab.Screen name="Settings" component={SettingsScreen} />
-        </Tab.Navigator>
-      </NavigationContainer>
+      <RestaurantsContextProvider>
+        {/* anything below can use RestaurantsContext now */}
+        <NavigationContainer>
+          <Tab.Navigator screenOptions={createScreenOptions}>
+            <Tab.Screen name="Restaurants" component={RestaurantsScreen} />
+            <Tab.Screen name="Map" component={MapScreen} />
+            <Tab.Screen name="Settings" component={SettingsScreen} />
+          </Tab.Navigator>
+        </NavigationContainer>
+      </RestaurantsContextProvider>
     </ThemeProvider>
   );
 }
