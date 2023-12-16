@@ -8,16 +8,13 @@ export const restaurantsRequest = (location = "37.7749295,-122.4194155") => {
   });
 };
 
-const restaurantsTransform = (result) => {
-  const newResult = camelize(result);
-  return newResult;
-};
-restaurantsRequest()
-  .then(restaurantsTransform)
-  .then((transformedResponse) => {
-    console.log(camelize(transformedResponse));
-    console.log("it worked!!!");
-  })
-  .catch((err) => {
-    console.error(err);
+const restaurantsTransform = ({ results = [] }) => {
+  const mappedResults = results.map((restaurant) => {
+    return {
+      ...restaurant,
+      isOpenNow: restaurant.opening_hours && restaurant.opening_hours.open_now, // adds isOpenNow key and make value be opening_hours
+      isClosedTemporarily: restaurant.business_status === "CLOSED_TEMPORARILY", // adds isClosedTemporarily key and makes value be business_status
+    };
   });
+  return camelize(mappedResults);
+};
