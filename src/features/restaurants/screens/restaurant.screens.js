@@ -19,14 +19,8 @@ const ListContainer = styled(FlatList).attrs({
   },
 })``;
 
-const restaurantAPI = Array.from(new Array(15));
-restaurantAPI.forEach((ele, idx) => {
-  restaurantAPI[idx] = { name: idx };
-});
-
 export default function RestaurantsScreen() {
-  const restuarantContext = useContext(RestaurantsContext); // popuplates the ammount of restaurants determined in RestaurantsContext array
-  console.log(restuarantContext);
+  const { isLoading, error, restaurants } = useContext(RestaurantsContext); // popuplates the ammount of restaurants determined in RestaurantsContext array
   const [searchQueary, setSearchQuery] = useState("");
 
   const onChangeSearch = (query) => setSearchQuery(query);
@@ -44,10 +38,10 @@ export default function RestaurantsScreen() {
         />
       </SearchContainer>
       <ListContainer
-        data={restuarantContext.restaurants}
-        renderItem={() => (
+        data={restaurants}
+        renderItem={({ item }) => (
           <Spacer position="bottom" size="large">
-            <RestaurantInfoCard />
+            <RestaurantInfoCard restaurant={item} />
           </Spacer>
         )}
         keyExtractor={(item) => item.name}
