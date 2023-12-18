@@ -13,6 +13,7 @@ export const colors = {
     error: "#D0421B",
     success: "#138000",
     blue: "#2182BD",
+    red: "tomato",
   },
   bg: {
     primary: "#FFFFFF",
@@ -26,5 +27,6 @@ export const colors = {
     inverse: "#FFFFFF",
     error: "#D0421B",
     success: "#138000",
+    red: "tomato",
   },
 };
