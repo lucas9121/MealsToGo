@@ -13,8 +13,12 @@ export const Search = () => {
   const [searchKeyword, setSearchKeyword] = useState(keyword);
 
   useEffect(() => {
-    search(searchKeyword);
-  }, []);
+    // Add a condition to avoid unnecessary API calls
+    if (searchKeyword !== keyword) {
+      // Perform the search only if the searchKeyword has changed
+      search(searchKeyword);
+    }
+  }, []); // Add dependencies
   return (
     <SearchContainer>
       <Searchbar

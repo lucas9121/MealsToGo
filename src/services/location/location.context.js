@@ -6,7 +6,7 @@ export const LocationContext = createContext();
 
 export const LocationContextProvider = ({ children }) => {
   const [keyword, setKeyword] = useState("");
-  const [location, setLocation] = useState(null);
+  const [location, setLocation] = useState({});
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
 
@@ -17,7 +17,11 @@ export const LocationContextProvider = ({ children }) => {
       if (!searchKeyword.length) return; //end here if no search word
       const request = await locationRequest(searchKeyword.toLowerCase());
       const result = locationTransform(request);
-      setLocation(result);
+      setLocation((prevLocation) => ({
+        ...prevLocation,
+        lat: result.lat,
+        lng: result.lng,
+      }));
       setIsLoading(false);
     } catch (error) {
       setIsLoading(false);
