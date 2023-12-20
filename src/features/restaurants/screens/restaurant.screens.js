@@ -17,7 +17,7 @@ const ListContainer = styled(FlatList).attrs({
 })``;
 
 export default function RestaurantsScreen() {
-  const { isLoading, error, restaurants } = useContext(RestaurantsContext); // popuplates the ammount of restaurants determined in RestaurantsContext array
+  const { isLoading, restaurants } = useContext(RestaurantsContext); // popuplates the ammount of restaurants determined in RestaurantsContext array
 
   return isLoading ? (
     <LoadingComponent />
