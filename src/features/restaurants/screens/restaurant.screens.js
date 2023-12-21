@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import styled from "styled-components/native";
-import { StatusBar, FlatList, Platform } from "react-native";
+import { FlatList } from "react-native";
 
 import { RestaurantInfoCard } from "../components/restaurant-info-card.component";
 import { Spacer } from "../components/spacer/spacer.component";
@@ -23,9 +23,6 @@ export default function RestaurantsScreen() {
     <LoadingComponent />
   ) : (
     <SafeArea>
-      <StatusBar
-        barStyle={Platform.OS === "ios" ? "dark-content" : "light-content"}
-      />
       <Search />
       <ListContainer
         data={restaurants}
