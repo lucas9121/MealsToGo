@@ -1,4 +1,5 @@
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { Text } from "react-native";
 
 import RestaurantsScreen from "../../features/restaurants/screens/restaurant.screens";
 
@@ -10,6 +11,10 @@ export const RestaurantNavigator = () => {
       <RestaurantStack.Screen
         name="Restaurants"
         component={RestaurantsScreen}
+      />
+      <RestaurantStack.Screen
+        name="RestaurantDetail "
+        component={() => <Text>Restaurant Detail</Text>}
       />
     </RestaurantStack.Navigator>
   );
