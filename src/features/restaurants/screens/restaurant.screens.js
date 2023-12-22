@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import styled from "styled-components/native";
-import { FlatList, Pressable } from "react-native";
+import { FlatList, TouchableOpacity } from "react-native";
 
 import { RestaurantInfoCard } from "../components/restaurant-info-card.component";
 import { Spacer } from "../components/spacer/spacer.component";
@@ -28,11 +28,13 @@ export default function RestaurantsScreen({ navigation }) {
       <ListContainer
         data={restaurants}
         renderItem={({ item }) => (
-          <Pressable onPress={() => navigation.navigate("RestaurantDetail")}>
+          <TouchableOpacity
+            onPress={() => navigation.navigate("RestaurantDetail")}
+          >
             <Spacer position="bottom" size="large">
               <RestaurantInfoCard restaurant={item} />
             </Spacer>
-          </Pressable>
+          </TouchableOpacity>
         )}
         keyExtractor={(item) => item.name}
       />
