@@ -12,7 +12,7 @@ const Tab = createBottomTabNavigator();
 // will choose icon based on focused
 const getIconName = (route, focused) => {
   switch (route.name) {
-    case "Restaurants":
+    case "Restaurants Tab":
       return (iconName = focused ? "restaurant" : "restaurant-outline");
     case "Map":
       return (iconName = focused ? "map" : "map-outline");
