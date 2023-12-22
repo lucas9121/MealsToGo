@@ -1,13 +1,21 @@
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import {
+  createStackNavigator,
+  TransitionPresets,
+} from "@react-navigation/stack";
 import { Text } from "react-native";
 
 import RestaurantsScreen from "../../features/restaurants/screens/restaurant.screens";
 
-const RestaurantStack = createNativeStackNavigator();
+const RestaurantStack = createStackNavigator();
 
 export const RestaurantNavigator = () => {
   return (
-    <RestaurantStack.Navigator screenOptions={{ headerShown: false }}>
+    <RestaurantStack.Navigator
+      screenOptions={{
+        ...TransitionPresets.ModalPresentationIOS,
+        headerShown: false,
+      }}
+    >
       <RestaurantStack.Screen // will pass a prop to component at the top level
         name="Restaurants"
         component={RestaurantsScreen}
