@@ -14,7 +14,7 @@ const getIconName = (route, focused) => {
   switch (route.name) {
     case "Restaurants Tab":
       return (iconName = focused ? "restaurant" : "restaurant-outline");
-    case "Map":
+    case "Map Tab":
       return (iconName = focused ? "map" : "map-outline");
     default:
       return (iconName = focused ? "settings" : "settings-outline");
@@ -36,8 +36,8 @@ export const AppNavigator = () => {
     <NavigationContainer>
       <Tab.Navigator screenOptions={createScreenOptions}>
         <Tab.Screen name="Restaurants Tab" component={RestaurantNavigator} />
-        <Tab.Screen name="Map" component={MapScreen} />
-        <Tab.Screen name="Settings" component={SettingsScreen} />
+        <Tab.Screen name="Map Tab" component={MapScreen} />
+        <Tab.Screen name="Settings Tab" component={SettingsScreen} />
       </Tab.Navigator>
     </NavigationContainer>
   );
