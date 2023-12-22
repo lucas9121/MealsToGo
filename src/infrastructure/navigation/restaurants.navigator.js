@@ -8,12 +8,12 @@ const RestaurantStack = createNativeStackNavigator();
 export const RestaurantNavigator = () => {
   return (
     <RestaurantStack.Navigator screenOptions={{ headerShown: false }}>
-      <RestaurantStack.Screen
+      <RestaurantStack.Screen // will pass a prop to component at the top level
         name="Restaurants"
         component={RestaurantsScreen}
       />
       <RestaurantStack.Screen
-        name="RestaurantDetail "
+        name="RestaurantDetail"
         component={() => <Text>Restaurant Detail</Text>}
       />
     </RestaurantStack.Navigator>

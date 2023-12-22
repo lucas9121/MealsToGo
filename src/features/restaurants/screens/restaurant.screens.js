@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import styled from "styled-components/native";
-import { FlatList } from "react-native";
+import { FlatList, Pressable } from "react-native";
 
 import { RestaurantInfoCard } from "../components/restaurant-info-card.component";
 import { Spacer } from "../components/spacer/spacer.component";
@@ -16,7 +16,8 @@ const ListContainer = styled(FlatList).attrs({
   },
 })``;
 
-export default function RestaurantsScreen() {
+// prop comes from restaurant navigator
+export default function RestaurantsScreen({ navigation }) {
   const { isLoading, restaurants } = useContext(RestaurantsContext); // popuplates the ammount of restaurants determined in RestaurantsContext array
 
   return isLoading ? (
@@ -27,9 +28,11 @@ export default function RestaurantsScreen() {
       <ListContainer
         data={restaurants}
         renderItem={({ item }) => (
-          <Spacer position="bottom" size="large">
-            <RestaurantInfoCard restaurant={item} />
-          </Spacer>
+          <Pressable onPress={() => navigation.navigate("RestaurantDetail")}>
+            <Spacer position="bottom" size="large">
+              <RestaurantInfoCard restaurant={item} />
+            </Spacer>
+          </Pressable>
         )}
         keyExtractor={(item) => item.name}
       />
