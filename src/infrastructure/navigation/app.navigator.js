@@ -4,7 +4,8 @@ import { Ionicons } from "@expo/vector-icons";
 
 import { RestaurantNavigator } from "./restaurants.navigator";
 import SettingsScreen from "../../features/restaurants/screens/settings.screen";
-import MapScreen from "../../features/restaurants/screens/map.screen";
+// import MapScreen from "../../features/restaurants/screens/map.screen";
+import { MapScreen } from "../../features/map/screens/map.screen";
 import { colors } from "../theme/colors";
 
 const Tab = createBottomTabNavigator();
