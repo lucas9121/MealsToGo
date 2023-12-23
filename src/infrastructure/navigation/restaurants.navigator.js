@@ -12,8 +12,10 @@ export const RestaurantNavigator = () => {
   return (
     <RestaurantStack.Navigator
       screenOptions={{
-        // ...TransitionPresets.ModalPresentationIOS,
+        ...TransitionPresets.ModalPresentationIOS,
         headerShown: false,
+        gestureEnabled: true,
+        gestureResponseDistance: 200,
       }}
     >
       <RestaurantStack.Screen // will pass a prop to component at the top level
