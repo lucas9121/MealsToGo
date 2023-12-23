@@ -14,7 +14,6 @@ export const RestaurantNavigator = () => {
       screenOptions={{
         ...TransitionPresets.ModalPresentationIOS,
         headerShown: false,
-        gestureEnabled: true,
         gestureResponseDistance: 200,
       }}
     >
