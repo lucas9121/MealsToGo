@@ -4,14 +4,9 @@ import {
 } from "@react-navigation/stack";
 
 import RestaurantsScreen from "../../features/restaurants/screens/restaurant.screens";
-import { RestaurantInfoCard } from "../../features/restaurants/components/restaurant-info-card.component";
+import { RestaurantDetailScreen } from "../../features/restaurants/screens/restaurant-detail.screen";
 
 const RestaurantStack = createStackNavigator();
-
-const RestaurantDetail = ({ route }) => {
-  const { itemId, otherParam } = route.params;
-  return <RestaurantInfoCard restaurant={otherParam} />;
-};
 
 export const RestaurantNavigator = () => {
   return (
@@ -27,7 +22,7 @@ export const RestaurantNavigator = () => {
       />
       <RestaurantStack.Screen
         name="RestaurantDetail"
-        component={RestaurantDetail}
+        component={RestaurantDetailScreen}
       />
     </RestaurantStack.Navigator>
   );

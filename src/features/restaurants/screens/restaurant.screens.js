@@ -33,7 +33,7 @@ export default function RestaurantsScreen({ navigation }) {
               onPress={() =>
                 navigation.navigate("RestaurantDetail", {
                   itemId: `flower-${item.placeId}-${idx}`,
-                  otherParam: item,
+                  restaurant: item,
                 })
               }
             >
