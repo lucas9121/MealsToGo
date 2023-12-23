@@ -27,15 +27,22 @@ export default function RestaurantsScreen({ navigation }) {
       <Search />
       <ListContainer
         data={restaurants}
-        renderItem={({ item }) => (
-          <TouchableOpacity
-            onPress={() => navigation.navigate("RestaurantDetail")}
-          >
-            <Spacer position="bottom" size="large">
-              <RestaurantInfoCard restaurant={item} />
-            </Spacer>
-          </TouchableOpacity>
-        )}
+        renderItem={({ item }, idx) => {
+          return (
+            <TouchableOpacity
+              onPress={() =>
+                navigation.navigate("RestaurantDetail", {
+                  itemId: `flower-${item.placeId}-${idx}`,
+                  otherParam: item,
+                })
+              }
+            >
+              <Spacer position="bottom" size="large">
+                <RestaurantInfoCard restaurant={item} />
+              </Spacer>
+            </TouchableOpacity>
+          );
+        }}
         keyExtractor={(item) => item.name}
       />
     </SafeArea>

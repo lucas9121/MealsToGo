@@ -5,8 +5,14 @@ import {
 import { Text } from "react-native";
 
 import RestaurantsScreen from "../../features/restaurants/screens/restaurant.screens";
+import { RestaurantInfoCard } from "../../features/restaurants/components/restaurant-info-card.component";
 
 const RestaurantStack = createStackNavigator();
+
+const RestaurantDetail = ({ route }) => {
+  const { itemId, otherParam } = route.params;
+  return <RestaurantInfoCard restaurant={otherParam} />;
+};
 
 export const RestaurantNavigator = () => {
   return (
@@ -22,7 +28,7 @@ export const RestaurantNavigator = () => {
       />
       <RestaurantStack.Screen
         name="RestaurantDetail"
-        component={() => <Text>Restaurant Detail</Text>}
+        component={RestaurantDetail}
       />
     </RestaurantStack.Navigator>
   );
