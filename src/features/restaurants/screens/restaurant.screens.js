@@ -32,6 +32,7 @@ export default function RestaurantsScreen({ navigation }) {
             <TouchableOpacity
               onPress={() =>
                 navigation.navigate("RestaurantDetail", {
+                  // adds params
                   itemId: `flower-${item.placeId}-${idx}`,
                   restaurant: item,
                 })
