@@ -50,7 +50,6 @@ export const LocationContextProvider = ({ children }) => {
       const request = await locationRequest(keyword.toLowerCase());
       handleSearchResult(request);
       setIsLoading(false);
-      setKeyword("");
     } catch (error) {
       handleSearchError(error);
     }
