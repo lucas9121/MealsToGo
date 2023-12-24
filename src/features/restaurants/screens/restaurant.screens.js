@@ -30,13 +30,12 @@ export default function RestaurantsScreen({ navigation }) {
         renderItem={({ item }, idx) => {
           return (
             <TouchableOpacity
-              onPress={() =>
+              onPress={() => {
                 navigation.navigate("RestaurantDetail", {
                   // adds params
-                  itemId: `flower-${item.placeId}-${idx}`,
                   restaurant: item,
-                })
-              }
+                });
+              }}
             >
               <Spacer position="bottom" size="large">
                 <RestaurantInfoCard restaurant={item} />
