@@ -22,6 +22,7 @@ export const LocationContextProvider = ({ children }) => {
       ...prevLocation,
       lat: result.lat,
       lng: result.lng,
+      viewport: result.viewport,
     }));
   };
 
