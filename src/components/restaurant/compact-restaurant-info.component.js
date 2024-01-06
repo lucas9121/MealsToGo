@@ -7,7 +7,7 @@ import { Text } from "../../features/restaurants/components/typography/text.comp
 const CompactImage = styled.Image`
   border-radius: ${(props) => props.theme.sizes[0]};
   width: ${(props) => props.theme.sizes[4]};
-  height: 100;
+  height: 100px;
 `;
 
 const CompactWebView = styled(WebView)`
