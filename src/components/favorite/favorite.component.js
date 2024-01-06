@@ -17,5 +17,9 @@ export const Favorite = () => {
   const { favorites, addToFavorites, removeFromFavorites } =
     useContext(FavoritesContext);
 
-  return <FavoriteButton>Heart</FavoriteButton>;
+  return (
+    <FavoriteButton>
+      <AntDesign name="heart" size={24} color="red" />{" "}
+    </FavoriteButton>
+  );
 };
