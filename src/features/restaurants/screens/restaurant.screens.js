@@ -7,6 +7,7 @@ import { Spacer } from "../../../components/spacer/spacer.component";
 import { FavoritesBar } from "../../../components/favorite/favorites-bar.component";
 import { SafeArea } from "../../../components/utility/safe-area.component";
 import { RestaurantsContext } from "../../../services/restaurants/restaurants.context";
+import { FavoritesContext } from "../../../services/favorites/favorites.context";
 import { LoadingComponent } from "../components/loading.component";
 import { Search } from "../components/search.component";
 
@@ -20,6 +21,7 @@ const ListContainer = styled(FlatList).attrs({
 // prop comes from restaurant navigator
 export default function RestaurantsScreen({ navigation }) {
   const { isLoading, restaurants } = useContext(RestaurantsContext); // popuplates the ammount of restaurants determined in RestaurantsContext array
+  const { favorites } = useContext(FavoritesContext);
   const [isToggled, setIsToggled] = useState(false);
 
   return isLoading ? (
@@ -30,10 +32,12 @@ export default function RestaurantsScreen({ navigation }) {
         isFavoritesToggled={isToggled}
         onFavoritesToggled={() => setIsToggled(!isToggled)}
       />
-      {isToggled && <FavoritesBar />}
+      {isToggled && (
+        <FavoritesBar favorites={favorites} onNavigate={navigation.navigate} />
+      )}
       <ListContainer
         data={restaurants}
-        renderItem={({ item }, idx) => {
+        renderItem={({ item }) => {
           return (
             <TouchableOpacity
               onPress={() => {
