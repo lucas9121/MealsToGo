@@ -1,4 +1,4 @@
-import { mockImages, mocks } from "."; //pulling from index
+import { mockImages, mocks } from "./mock"; //pulling from index
 import camelize from "camelize"; // camelcase seperate words. Adds consistency from API being returned.
 export const restaurantsRequest = async (
   location = "37.7749295,-122.4194155"

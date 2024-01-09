@@ -9,7 +9,7 @@ import { Lato_400Regular, Lato_700Bold } from "@expo-google-fonts/lato";
 import { theme } from "./src/infrastructure/theme";
 
 import { Navigation } from "./src/infrastructure/navigation";
-import { RestaurantsContextProvider } from "./src/services/restaurants/mock/restaurants.context";
+import { RestaurantsContextProvider } from "./src/services/restaurants/restaurants.context";
 import { LocationContextProvider } from "./src/services/location/location.context";
 import { FavoritesContextProvider } from "./src/services/favorites/favorites.context";
 import ExpoStatusBar from "expo-status-bar/build/ExpoStatusBar";

@@ -3,9 +3,9 @@ import styled from "styled-components/native";
 import { FlatList, TouchableOpacity } from "react-native";
 
 import { RestaurantInfoCard } from "../components/restaurant-info-card.component";
-import { Spacer } from "../components/spacer/spacer.component";
+import { Spacer } from "../../../components/spacer/spacer.component";
 import { SafeArea } from "../../../components/utility/safe-area.component";
-import { RestaurantsContext } from "../../../services/restaurants/mock/restaurants.context";
+import { RestaurantsContext } from "../../../services/restaurants/restaurants.context";
 import { LoadingComponent } from "../components/loading.component";
 import { Search } from "../components/search.component";
 

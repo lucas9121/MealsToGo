@@ -3,7 +3,7 @@ import MapView, { Callout, Marker } from "react-native-maps";
 import styled from "styled-components/native";
 import { Search } from "../components/search.component";
 import { LocationContext } from "../../../services/location/location.context";
-import { RestaurantsContext } from "../../../services/restaurants/mock/restaurants.context";
+import { RestaurantsContext } from "../../../services/restaurants/restaurants.context";
 import { MapCallout } from "../components/map-callout.component";
 
 const Map = styled(MapView)`

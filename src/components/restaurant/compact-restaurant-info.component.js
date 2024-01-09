@@ -2,7 +2,7 @@ import styled from "styled-components";
 import WebView from "react-native-webview";
 import { Platform } from "react-native";
 
-import { Text } from "../../features/restaurants/components/typography/text.component";
+import { Text } from "../typography/text.component";
 
 const CompactImage = styled.Image`
   border-radius: ${(props) => props.theme.sizes[0]};
