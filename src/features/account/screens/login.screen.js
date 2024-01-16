@@ -9,7 +9,6 @@ import {
 import { AuthButton } from "../components/account.styles";
 import { Spacer } from "../../../components/spacer/spacer.component";
 import { AuthenticationContext } from "../../../services/authentication/authentication.context";
-import { onLog } from "firebase/app";
 
 export const LoginScreen = () => {
   const [email, setEmail] = useState("");
