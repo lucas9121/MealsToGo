@@ -8,12 +8,13 @@ import {
 } from "../components/account.styles";
 import { AuthButton } from "../components/account.styles";
 import { Spacer } from "../../../components/spacer/spacer.component";
+import { Text } from "../../../components/typography/text.component";
 import { AuthenticationContext } from "../../../services/authentication/authentication.context";
 
 export const LoginScreen = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const { onLogin, isAuthenticated } = useContext(AuthenticationContext);
+  const { onLogin, error } = useContext(AuthenticationContext);
 
   return (
     <AccountBackground>
@@ -28,6 +29,11 @@ export const LoginScreen = () => {
           style={{ width: 300 }}
         />
         <Spacer size="medium" />
+        {error && (
+          <Spacer size="medium">
+            <Text variant="error">{error}</Text>
+          </Spacer>
+        )}
         <TextInput
           label="Password"
           value={password}
