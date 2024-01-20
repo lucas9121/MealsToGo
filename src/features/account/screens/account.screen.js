@@ -5,10 +5,12 @@ import {
 } from "../components/account.styles";
 import { AuthButton } from "../components/account.styles";
 import { Spacer } from "../../../components/spacer/spacer.component";
+import { Text } from "../../../components/typography/text.component";
 
 export const AccountScreen = ({ navigation }) => (
   <AccountBackground>
     <AccountCover />
+    <Text variant="mainTitle">Meals To Go</Text>
     <AccountContainer>
       <AuthButton
         icon="lock-open-outline"
