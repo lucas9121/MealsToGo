@@ -1,14 +1,15 @@
-import { View, Text, Button } from "react-native";
+import { Text, Button } from "react-native";
 import { useContext } from "react";
 
+import { SafeArea } from "../../../components/utility/safe-area.component";
 import { AuthenticationContext } from "../../../services/authentication/authentication.context";
 
 export default function SettingsScreen() {
   const { onLogout } = useContext(AuthenticationContext);
   return (
-    <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+    <SafeArea>
       <Text>Settings!</Text>
       <Button title="logout" onPress={() => onLogout()} />
-    </View>
+    </SafeArea>
   );
 }
