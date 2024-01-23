@@ -7,6 +7,7 @@ import { RestaurantsContextProvider } from "../../services/restaurants/restauran
 
 import { RestaurantNavigator } from "./restaurants.navigator";
 import SettingsScreen from "../../features/settings/screens/settings.screen";
+import { SettingsNavigator } from "./settings.navigator";
 import { MapScreen } from "../../features/map/screens/map.screen";
 import { colors } from "../theme/colors";
 
@@ -45,7 +46,7 @@ export const AppNavigator = () => {
               component={RestaurantNavigator}
             />
             <Tab.Screen name="Map Tab" component={MapScreen} />
-            <Tab.Screen name="Settings Tab" component={SettingsScreen} />
+            <Tab.Screen name="Settings Tab" component={SettingsNavigator} />
           </Tab.Navigator>
         </RestaurantsContextProvider>
       </LocationContextProvider>
