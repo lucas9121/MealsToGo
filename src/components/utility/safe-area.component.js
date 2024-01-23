@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 export const SafeArea = styled(SafeAreaView)`
   flex: 1;
-  /* background-color: ${(props) => props.theme.colors.bg.dark}; */
+  background-color: ${(props) => props.theme.colors.bg.primary};
   /* Avoids terminal warning */
   ${StatusBar.currentHeight &&
   `margin-top: ${StatusBar.currentHeight}px;`}; /* Only for Android devices */
