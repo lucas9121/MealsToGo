@@ -6,7 +6,6 @@ import { FavoritesContext } from "../../../services/favorites/favorites.context"
 import { RestaurantInfoCard } from "../../restaurants/components/restaurant-info-card.component";
 import { Spacer } from "../../../components/spacer/spacer.component";
 import { SafeArea } from "../../../components/utility/safe-area.component";
-import { AuthButton } from "../../account/components/account.styles";
 import { Text } from "../../../components/typography/text.component";
 import { RestaurantList } from "../../restaurants/components/restaurant-list.styles";
 
