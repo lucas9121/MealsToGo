@@ -60,9 +60,9 @@ export const AuthenticationContextProvider = ({ children }) => {
     setIsLoading(true);
     signOut(auth)
       .then(() => {
-        setUser(null);
         setIsAuthenticated(false);
         setIsLoading(false);
+        setUser(null);
       })
       .catch((error) => {
         setIsLoading(false);
