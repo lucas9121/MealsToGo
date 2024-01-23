@@ -14,12 +14,7 @@ export const AuthenticationContextProvider = ({ children }) => {
   const auth = getAuth();
 
   onAuthStateChanged(auth, (usr) => {
-    if (usr) {
-      setUser(usr);
-      setIsLoading(false);
-    } else {
-      setIsLoading(false);
-    }
+    if (usr) setUser(usr);
   });
 
   const onLogin = (email, password) => {
