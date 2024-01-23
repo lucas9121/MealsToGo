@@ -10,13 +10,7 @@ import { RestaurantsContext } from "../../../services/restaurants/restaurants.co
 import { FavoritesContext } from "../../../services/favorites/favorites.context";
 import { LoadingComponent } from "../components/loading.component";
 import { Search } from "../components/search.component";
-
-// attributes function allows me to give specific props to default value, which is Flatlist in this case
-const ListContainer = styled(FlatList).attrs({
-  contentContainerStyle: {
-    padding: 16,
-  },
-})``;
+import { RestaurantList } from "../components/restaurant-list.styles";
 
 // prop comes from restaurant navigator
 export default function RestaurantsScreen({ navigation }) {
@@ -35,7 +29,7 @@ export default function RestaurantsScreen({ navigation }) {
       {isToggled && (
         <FavoritesBar favorites={favorites} onNavigate={navigation.navigate} />
       )}
-      <ListContainer
+      <RestaurantList
         data={restaurants}
         renderItem={({ item }) => {
           return (
