@@ -7,7 +7,7 @@ export const AuthenticationContext = createContext();
 
 export const AuthenticationContextProvider = ({ children }) => {
   const [isLoading, setIsLoading] = useState(false);
-  const [user, setUser] = useState({});
+  const [user, setUser] = useState(null);
   const [error, setError] = useState(null);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
@@ -60,7 +60,7 @@ export const AuthenticationContextProvider = ({ children }) => {
     setIsLoading(true);
     signOut(auth)
       .then(() => {
-        setUser({});
+        setUser(null);
         setIsAuthenticated(false);
         setIsLoading(false);
       })
