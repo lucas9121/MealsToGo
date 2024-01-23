@@ -1,5 +1,6 @@
 import { useState, useContext } from "react";
 import { Keyboard, Platform } from "react-native";
+import { ActivityIndicator, MD2Colors } from "react-native-paper";
 import {
   AccountBackground,
   AccountContainer,
@@ -14,6 +15,7 @@ import {
 import { Spacer } from "../../../components/spacer/spacer.component";
 import { Text } from "../../../components/typography/text.component";
 import { AuthenticationContext } from "../../../services/authentication/authentication.context";
+import { isLoading } from "expo-font";
 
 export const RegisterScreen = ({ navigation }) => {
   const [email, setEmail] = useState("");
@@ -58,16 +60,20 @@ export const RegisterScreen = ({ navigation }) => {
               <Text variant="error">{error}</Text>
             </ErrorContainer>
           )}
-          <AuthButton
-            icon="account-plus-outline"
-            mode="contained"
-            onPress={() => {
-              Keyboard.dismiss();
-              onRegister(email, password, repeatedPassword);
-            }}
-          >
-            Sign up
-          </AuthButton>
+          {!isLoading ? (
+            <AuthButton
+              icon="account-plus-outline"
+              mode="contained"
+              onPress={() => {
+                Keyboard.dismiss();
+                onRegister(email, password, repeatedPassword);
+              }}
+            >
+              Sign up
+            </AuthButton>
+          ) : (
+            <ActivityIndicator animating={true} color={MD2Colors.blue200} />
+          )}
         </AccountContainer>
         <Spacer size="medium">
           <AuthButton mode="contained" onPress={() => navigation.goBack()}>
