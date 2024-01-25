@@ -1,7 +1,7 @@
 import { useContext, useState, useCallback } from "react";
 import { TouchableOpacity } from "react-native";
 import { List, Avatar } from "react-native-paper";
-import { useFocusEffect, useIsFocused } from "@react-navigation/native";
+import { useFocusEffect } from "@react-navigation/native";
 import styled from "styled-components";
 
 import { SafeArea } from "../../../components/utility/safe-area.component";
@@ -9,6 +9,7 @@ import { AuthenticationContext } from "../../../services/authentication/authenti
 import { colors } from "../../../infrastructure/theme/colors";
 import { Text } from "../../../components/typography/text.component";
 import { Spacer } from "../../../components/spacer/spacer.component";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const SettingsItem = styled(List.Item)`
   padding: ${(props) => props.theme.space[3]};
@@ -22,17 +23,17 @@ export default function SettingsScreen({ navigation }) {
   const { onLogout, user } = useContext(AuthenticationContext);
   const [photo, setPhoto] = useState(null);
 
-  const getProfilePicture = (currentUser) => {
-    const photoUri = currentUser.photoURL;
+  const getProfilePicture = async (currentUser) => {
+    const photoUri =
+      (await AsyncStorage.getItem(`${user.uid}-photo`)) ||
+      (await currentUser.photoURL);
     setPhoto(photoUri);
   };
-
-  const isFocused = useIsFocused();
 
   useFocusEffect(
     useCallback(() => {
       getProfilePicture(user);
-    }, [isFocused, user])
+    }, [user])
   );
 
   return (
