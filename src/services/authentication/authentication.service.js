@@ -27,19 +27,6 @@ initializeAuth(app, {
   persistence: getReactNativePersistence(AsyncStorage),
 });
 const auth = getAuth(app);
-// // Log all items in AsyncStorage
-// const logAsyncStorageItems = async () => {
-//   try {
-//     const keys = await AsyncStorage.getAllKeys();
-//     const items = await AsyncStorage.multiGet(keys);
-
-//     console.log("Items in AsyncStorage:", items);
-//   } catch (error) {
-//     console.error("Error reading AsyncStorage:", error);
-//   }
-// };
-
-// logAsyncStorageItems();
 
 export const loginRequest = (email, password) =>
   signInWithEmailAndPassword(auth, email, password);
