@@ -13,7 +13,7 @@ export default function FavoritesScreen({ navigation }) {
   const { favorites } = useContext(FavoritesContext);
   return favorites.length ? (
     <SafeArea style={{ justifyContent: "center" }}>
-      <View
+      {/* <View
         style={{
           flexDirection: "row",
           alignItems: "center",
@@ -30,7 +30,7 @@ export default function FavoritesScreen({ navigation }) {
         />
         <Text variant="title">Favorites</Text>
         <Spacer position="right" size="large" />
-      </View>
+      </View> */}
       <RestaurantList
         style={{ height: 2 }}
         data={favorites}
