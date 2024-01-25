@@ -31,7 +31,6 @@ export default function CameraScreen({ navigation }) {
     if (cameraRef.current) {
       const photo = await cameraRef.current.takePictureAsync();
       onUpdate(photo.uri);
-      //   takeProfilePic(photo);
     }
   };
 
