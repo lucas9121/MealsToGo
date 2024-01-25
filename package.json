@@ -36,7 +36,8 @@
     "react-native-webview": "13.2.2",
     "shell-exec": "^1.1.2",
     "styled-components": "^6.1.1",
-    "expo-updates": "~0.18.19"
+    "expo-updates": "~0.18.19",
+    "expo-camera": "~13.4.4"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",

@@ -14,7 +14,10 @@ export const AuthenticationContextProvider = ({ children }) => {
   const auth = getAuth();
 
   onAuthStateChanged(auth, (usr) => {
-    if (usr) setUser(usr);
+    if (usr) {
+      setUser(usr);
+      setIsAuthenticated(true);
+    }
   });
 
   const onLogin = (email, password) => {
