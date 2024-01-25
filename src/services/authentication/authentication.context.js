@@ -1,5 +1,10 @@
 import { useState, createContext } from "react";
-import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
+import {
+  getAuth,
+  onAuthStateChanged,
+  signOut,
+  updateProfile,
+} from "firebase/auth";
 
 import { loginRequest, registerRequest } from "./authentication.service";
 
@@ -68,6 +73,12 @@ export const AuthenticationContextProvider = ({ children }) => {
       });
   };
 
+  const onUpdate = (photo) => {
+    updateProfile(auth.currentUser, {
+      photoURL: photo,
+    });
+  };
+
   return (
     <AuthenticationContext.Provider
       value={{
@@ -78,6 +89,7 @@ export const AuthenticationContextProvider = ({ children }) => {
         onLogin,
         onRegister,
         onLogout,
+        onUpdate,
       }}
     >
       {children}

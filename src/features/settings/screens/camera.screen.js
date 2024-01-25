@@ -1,15 +1,16 @@
 import { Camera, CameraType } from "expo-camera";
-import { useState, useRef } from "react";
+import { useState, useRef, useContext } from "react";
 import { Button, StyleSheet, Text, TouchableOpacity, View } from "react-native";
-import { Icon } from "react-native-paper";
 import { Ionicons } from "@expo/vector-icons";
 
 import { colors } from "../../../infrastructure/theme/colors";
+import { AuthenticationContext } from "../../../services/authentication/authentication.context";
 
-export default function CameraScreen({ user }) {
+export default function CameraScreen({ navigation }) {
   const [type, setType] = useState(CameraType.front);
   const [permission, requestPermission] = Camera.useCameraPermissions();
   const cameraRef = useRef(null);
+  const { user, onUpdate } = useContext(AuthenticationContext);
 
   if (!permission) {
     // Camera permissions are still loading
@@ -38,8 +39,7 @@ export default function CameraScreen({ user }) {
     if (cameraRef.current) {
       const photo = await cameraRef.current.takePictureAsync();
       console.log("photo taken", photo.uri);
-      user.photoURL = await photo.uri;
-      console.log(user.photoURL);
+      onUpdate(photo.uri);
       //   takeProfilePic(photo);
     }
   };
@@ -52,16 +52,15 @@ export default function CameraScreen({ user }) {
         cameraType={CameraType.front}
         style={styles.camera}
         type={type}
-      >
-        <View style={styles.buttonContainer}>
-          {/* <TouchableOpacity style={styles.button} onPress={toggleCameraType}>
+      ></Camera>
+      <View style={styles.buttonContainer}>
+        {/* <TouchableOpacity style={styles.button} onPress={toggleCameraType}>
             <Text style={styles.text}>Flip Camera</Text>
           </TouchableOpacity> */}
-          <TouchableOpacity style={styles.button} onPress={takePicture}>
-            <Ionicons name="camera" size={40} color={colors.bg.primary} />
-          </TouchableOpacity>
-        </View>
-      </Camera>
+        <TouchableOpacity style={styles.button} onPress={takePicture}>
+          <Ionicons name="camera" size={40} color={colors.bg.primary} />
+        </TouchableOpacity>
+      </View>
     </View>
   );
 }
@@ -70,12 +69,16 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "black",
   },
   camera: {
-    flex: 1,
+    width: 180,
+    height: 180,
+    borderRadius: 90,
+    overflow: "hidden",
   },
   buttonContainer: {
-    flex: 1,
     flexDirection: "row",
     backgroundColor: "transparent",
     margin: 64,

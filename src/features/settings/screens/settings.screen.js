@@ -1,6 +1,7 @@
-import { useContext, useState } from "react";
+import { useContext, useState, useCallback } from "react";
 import { TouchableOpacity } from "react-native";
 import { List, Avatar } from "react-native-paper";
+import { useFocusEffect, useIsFocused } from "@react-navigation/native";
 import styled from "styled-components";
 
 import { SafeArea } from "../../../components/utility/safe-area.component";
@@ -19,17 +20,27 @@ const AvatarContainer = styled.View`
 
 export default function SettingsScreen({ navigation }) {
   const { onLogout, user } = useContext(AuthenticationContext);
-  const [picUrl, setPicUrl] = useState(null);
-  console.log(user.photoURL);
-  const takeProfilePic = (pic, user = user) => {
-    user.photoURL = pic;
+  const [photo, setPhoto] = useState(null);
+
+  const getProfilePicture = (currentUser) => {
+    const photoUri = currentUser.photoURL;
+    setPhoto(photoUri);
   };
+
+  const isFocused = useIsFocused();
+
+  useFocusEffect(
+    useCallback(() => {
+      getProfilePicture(user);
+    }, [isFocused, user])
+  );
+
   return (
     <SafeArea>
-      <TouchableOpacity onPress={() => navigation.navigate("Camera", { user })}>
+      <TouchableOpacity onPress={() => navigation.navigate("Camera")}>
         <AvatarContainer>
-          {user.photoURL ? (
-            <Avatar.Image size={180} source={user.photoURL} />
+          {photo ? (
+            <Avatar.Image size={180} source={{ uri: photo }} />
           ) : (
             <Avatar.Icon
               size={180}
