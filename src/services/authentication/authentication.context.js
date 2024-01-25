@@ -76,7 +76,11 @@ export const AuthenticationContextProvider = ({ children }) => {
   const onUpdate = (photo) => {
     updateProfile(auth.currentUser, {
       photoURL: photo,
-    });
+    })
+      .then(() => {})
+      .catch((error) => {
+        console.error("Failed to update user: ", error);
+      });
   };
 
   return (

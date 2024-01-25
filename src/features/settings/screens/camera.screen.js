@@ -10,15 +10,13 @@ export default function CameraScreen({ navigation }) {
   const [type, setType] = useState(CameraType.front);
   const [permission, requestPermission] = Camera.useCameraPermissions();
   const cameraRef = useRef(null);
-  const { user, onUpdate } = useContext(AuthenticationContext);
+  const { onUpdate } = useContext(AuthenticationContext);
 
   if (!permission) {
-    // Camera permissions are still loading
     return <View />;
   }
 
   if (!permission.granted) {
-    // Camera permissions are not granted yet
     return (
       <View style={styles.container}>
         <Text style={{ textAlign: "center" }}>
@@ -29,16 +27,9 @@ export default function CameraScreen({ navigation }) {
     );
   }
 
-  function toggleCameraType() {
-    setType((current) =>
-      current === CameraType.back ? CameraType.front : CameraType.back
-    );
-  }
-
   const takePicture = async () => {
     if (cameraRef.current) {
       const photo = await cameraRef.current.takePictureAsync();
-      console.log("photo taken", photo.uri);
       onUpdate(photo.uri);
       //   takeProfilePic(photo);
     }
@@ -54,9 +45,6 @@ export default function CameraScreen({ navigation }) {
         type={type}
       ></Camera>
       <View style={styles.buttonContainer}>
-        {/* <TouchableOpacity style={styles.button} onPress={toggleCameraType}>
-            <Text style={styles.text}>Flip Camera</Text>
-          </TouchableOpacity> */}
         <TouchableOpacity style={styles.button} onPress={takePicture}>
           <Ionicons name="camera" size={40} color={colors.bg.primary} />
         </TouchableOpacity>
