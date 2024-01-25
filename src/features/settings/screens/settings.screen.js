@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { TouchableOpacity } from "react-native";
 import { List, Avatar } from "react-native-paper";
 import styled from "styled-components";
@@ -19,15 +19,24 @@ const AvatarContainer = styled.View`
 
 export default function SettingsScreen({ navigation }) {
   const { onLogout, user } = useContext(AuthenticationContext);
+  const [picUrl, setPicUrl] = useState(null);
+  console.log(user.photoURL);
+  const takeProfilePic = (pic, user = user) => {
+    user.photoURL = pic;
+  };
   return (
     <SafeArea>
-      <TouchableOpacity onPress={() => navigation.navigate("Camera")}>
+      <TouchableOpacity onPress={() => navigation.navigate("Camera", { user })}>
         <AvatarContainer>
-          <Avatar.Icon
-            size={180}
-            icon="human"
-            backgroundColor={colors.ui.blue}
-          />
+          {user.photoURL ? (
+            <Avatar.Image size={180} source={user.photoURL} />
+          ) : (
+            <Avatar.Icon
+              size={180}
+              icon="human"
+              backgroundColor={colors.ui.blue}
+            />
+          )}
           <Spacer position="top" size="large" />
           <Text variant="label">{user.email}</Text>
         </AvatarContainer>
