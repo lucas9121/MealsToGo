@@ -20,7 +20,9 @@ export const RegisterScreen = ({ navigation }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [repeatedPassword, setRepeatedPassword] = useState("");
-  const { onRegister, isLoading, error } = useContext(AuthenticationContext);
+  const { onRegister, isLoading, error, setError } = useContext(
+    AuthenticationContext
+  );
 
   return (
     <AccountBackground>
@@ -75,7 +77,12 @@ export const RegisterScreen = ({ navigation }) => {
           )}
         </AccountContainer>
         <Spacer size="medium">
-          <AuthButton mode="contained" onPress={() => navigation.goBack()}>
+          <AuthButton
+            mode="contained"
+            onPress={() => {
+              navigation.goBack(), setError(null);
+            }}
+          >
             Back
           </AuthButton>
         </Spacer>
