@@ -25,52 +25,54 @@ export const AuthenticationContextProvider = ({ children }) => {
     }
   });
 
-  const onLogin = (email, password) => {
-    setIsLoading(true);
-    loginRequest(email, password)
-      .then((userCredential) => {
-        setUser(userCredential.user);
-        setIsLoading(false);
-        setIsAuthenticated(true);
-      })
-      .catch((e) => {
-        setIsLoading(false);
-        console.error(e);
-        setError(e.code.slice(5));
-      });
-  };
-
-  const onRegister = (email, password, repeatedPassword) => {
-    setIsLoading(true);
-    if (password !== repeatedPassword) {
-      setError("Error: Passwords do not match");
-      return;
+  const onLogin = async (email, password) => {
+    try {
+      setIsLoading(true);
+      const userCredential = await loginRequest(email, password);
+      setUser(userCredential.user);
+      setIsLoading(false);
+      setIsAuthenticated(true);
+      setError(null);
+    } catch (e) {
+      setIsLoading(false);
+      console.error(e);
+      setError(e.code.slice(5));
     }
-    registerRequest(email, password)
-      .then((userCredential) => {
-        setUser(userCredential.user);
-        setIsLoading(false);
-        setIsAuthenticated(true);
-      })
-      .catch((e) => {
-        setIsLoading(false);
-        console.error(e);
-        setError(e.code.slice(5));
-      });
   };
 
-  const onLogout = () => {
-    setIsLoading(true);
-    signOut(auth)
-      .then(() => {
-        setIsAuthenticated(false);
-        setIsLoading(false);
-        setUser(null);
-      })
-      .catch((error) => {
-        setIsLoading(false);
-        console.error("Error with signout: ", error);
-      });
+  const onRegister = async (email, password, repeatedPassword) => {
+    try {
+      setIsLoading(true);
+
+      if (password !== repeatedPassword) {
+        setError("Error: Passwords do not match");
+        return;
+      }
+
+      const userCredential = await registerRequest(email, password);
+
+      setUser(userCredential.user);
+      setIsLoading(false);
+      setIsAuthenticated(true);
+      setError(null);
+    } catch (e) {
+      setIsLoading(false);
+      console.error(e);
+      setError(e.code.slice(5));
+    }
+  };
+
+  const onLogout = async () => {
+    try {
+      setIsLoading(true);
+      await signOut(auth);
+      setIsAuthenticated(false);
+      setIsLoading(false);
+      setUser(null);
+    } catch (error) {
+      setIsLoading(false);
+      console.error("Error with signout: ", error);
+    }
   };
 
   const onUpdate = (photo) => {
@@ -90,6 +92,7 @@ export const AuthenticationContextProvider = ({ children }) => {
         user,
         isLoading,
         error,
+        setError,
         onLogin,
         onRegister,
         onLogout,
