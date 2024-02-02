@@ -1,14 +1,6 @@
 import camelize from "camelize";
 
-import { locations } from "./location.mock";
-
-export const locationRequest = async (searchTerm) => {
-  const locationMock = locations[searchTerm];
-
-  if (!locationMock) throw new Error("Not found");
-
-  return locationMock;
-};
+export const locationRequest = (searchTerm) => {};
 
 export const locationTransform = (result) => {
   const formattedResponse = camelize(result);
