@@ -22,9 +22,6 @@ export const RestaurantsContextProvider = ({ children }) => {
       setIsLoading(true);
       setRestaurants([]);
 
-      // simulate asynchronous behavior with a timeout
-      await new Promise((resolve) => setTimeout(resolve, 2000));
-
       const results = await restaurantsRequest(loc);
       const transformedResults = restaurantsTransform(results);
 
