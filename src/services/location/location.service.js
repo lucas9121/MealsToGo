@@ -1,10 +1,9 @@
 import camelize from "camelize";
+import { locationtHost } from "../../utils/env";
 
 export const locationRequest = async (searchTerm) => {
   try {
-    const res = await fetch(
-      `${process.env.EXPO_PUBLIC_GEOCODE_URL}?city=${searchTerm}`
-    );
+    const res = await fetch(`${locationtHost}/geocode?city=${searchTerm}`);
     return res.json();
   } catch (error) {
     console.error("Error during fetch:", error);
