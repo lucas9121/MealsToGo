@@ -3,14 +3,8 @@ import camelize from "camelize";
 export const locationRequest = async (searchTerm) => {
   try {
     const res = await fetch(
-      `http://localhost:5001/mealstogo-2af32/us-central1/geocode?city=${searchTerm}`
+      `${process.env.EXPO_PUBLIC_GEOCODE_URL}?city=${searchTerm}`
     );
-
-    if (!res.ok) {
-      console.log("there was an error");
-      throw new Error(`Network response was not ok: ${res.statusText}`);
-    }
-
     return res.json();
   } catch (error) {
     console.error("Error during fetch:", error);

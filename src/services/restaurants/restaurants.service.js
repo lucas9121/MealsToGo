@@ -4,7 +4,7 @@ export const restaurantsRequest = async (
 ) => {
   try {
     const res = await fetch(
-      `http://localhost:5001/mealstogo-2af32/us-central1/placesNearby?location=${location}`
+      `${process.env.EXPO_PUBLIC_PLACES_NEARBY_URL}?location=${location}`
     );
     return res.json();
   } catch (error) {
