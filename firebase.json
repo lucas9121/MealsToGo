@@ -2,7 +2,6 @@
   "emulators": {
     "functions": {
       "port": 5001,
-      "host": "${FIREBASE_FUNCTIONS_HOST}",
       "protocol": "http"
     }
   },
