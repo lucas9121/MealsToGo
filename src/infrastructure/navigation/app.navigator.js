@@ -6,7 +6,6 @@ import { LocationContextProvider } from "../../services/location/location.contex
 import { RestaurantsContextProvider } from "../../services/restaurants/restaurants.context";
 
 import { RestaurantNavigator } from "./restaurants.navigator";
-import SettingsScreen from "../../features/settings/screens/settings.screen";
 import { SettingsNavigator } from "./settings.navigator";
 import { MapScreen } from "../../features/map/screens/map.screen";
 import { colors } from "../theme/colors";
