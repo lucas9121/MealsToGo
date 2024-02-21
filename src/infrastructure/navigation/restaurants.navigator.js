@@ -18,7 +18,7 @@ export const RestaurantNavigator = () => {
       }}
     >
       <RestaurantStack.Screen // will pass a prop to component at the top level
-        name="Restaurants"
+        name="RestaurantsScreen"
         component={RestaurantsScreen}
       />
       <RestaurantStack.Screen

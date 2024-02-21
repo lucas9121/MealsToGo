@@ -16,9 +16,9 @@ const Tab = createBottomTabNavigator();
 // will choose icon based on focused
 const getIconName = (route, focused) => {
   switch (route.name) {
-    case "Restaurants Tab":
+    case "Restaurants":
       return (iconName = focused ? "restaurant" : "restaurant-outline");
-    case "Map Tab":
+    case "Map":
       return (iconName = focused ? "map" : "map-outline");
     default:
       return (iconName = focused ? "settings" : "settings-outline");
@@ -41,12 +41,9 @@ export const AppNavigator = () => {
       <LocationContextProvider>
         <RestaurantsContextProvider>
           <Tab.Navigator screenOptions={createScreenOptions}>
-            <Tab.Screen
-              name="Restaurants Tab"
-              component={RestaurantNavigator}
-            />
-            <Tab.Screen name="Map Tab" component={MapScreen} />
-            <Tab.Screen name="Settings Tab" component={SettingsNavigator} />
+            <Tab.Screen name="Restaurants" component={RestaurantNavigator} />
+            <Tab.Screen name="Map" component={MapScreen} />
+            <Tab.Screen name="Settings" component={SettingsNavigator} />
           </Tab.Navigator>
         </RestaurantsContextProvider>
       </LocationContextProvider>

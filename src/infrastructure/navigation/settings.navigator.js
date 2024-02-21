@@ -21,7 +21,7 @@ export const SettingsNavigator = ({ route, navigation }) => (
       cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
     }}
   >
-    <SettingsStack.Screen name="Settings" component={SettingsScreen} />
+    <SettingsStack.Screen name="SettingsScreen" component={SettingsScreen} />
     <SettingsStack.Screen
       options={{
         headerShown: true,
@@ -31,7 +31,7 @@ export const SettingsNavigator = ({ route, navigation }) => (
             icon="arrow-left"
             textColor={colors.ui.blue}
             onPress={() => {
-              navigation.navigate("Settings");
+              navigation.navigate("SettingsScreen");
             }}
           />
         ),
