@@ -1,11 +1,11 @@
 import camelize from "camelize"; // camelcase seperate words. Adds consistency from API being returned.
-import { restaurantHost } from "../../utils/env";
+import { restaurantHost, isMock } from "../../utils/env";
 export const restaurantsRequest = async (
   location = "37.7749295,-122.4194155"
 ) => {
   try {
     const res = await fetch(
-      `${restaurantHost}/placesNearby?location=${location}`
+      `${restaurantHost}/placesNearby?location=${location}&mock=${isMock}`
     );
     return res.json();
   } catch (error) {

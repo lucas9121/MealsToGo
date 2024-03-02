@@ -1,9 +1,11 @@
 import camelize from "camelize";
-import { locationtHost } from "../../utils/env";
+import { locationtHost, isMock } from "../../utils/env";
 
 export const locationRequest = async (searchTerm) => {
   try {
-    const res = await fetch(`${locationtHost}/geocode?city=${searchTerm}`);
+    const res = await fetch(
+      `${locationtHost}/geocode?city=${searchTerm}&mock=${isMock}`
+    );
     return res.json();
   } catch (error) {
     console.error("Error during fetch:", error);
