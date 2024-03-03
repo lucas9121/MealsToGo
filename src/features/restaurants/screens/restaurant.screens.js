@@ -20,6 +20,7 @@ export default function RestaurantsScreen({ navigation }) {
   const { isLoading, restaurants, error } = useContext(RestaurantsContext); // popuplates the ammount of restaurants determined in RestaurantsContext array
   const { favorites } = useContext(FavoritesContext);
   const [isToggled, setIsToggled] = useState(false);
+  const hasError = !!error || !!locationError;
 
   return isLoading ? (
     <LoadingComponent />
@@ -32,32 +33,36 @@ export default function RestaurantsScreen({ navigation }) {
       {isToggled && (
         <FavoritesBar favorites={favorites} onNavigate={navigation.navigate} />
       )}
-      {!!error ||
-        (!!locationError && ( // transforms empty object into boolean
-          <Text variant="error">Oh no! Something went wrong.</Text>
-        ))}
-      <RestaurantList
-        data={restaurants}
-        renderItem={({ item }) => {
-          return (
-            <TouchableOpacity
-              onPress={() => {
-                navigation.navigate("RestaurantDetail", {
-                  // adds params
-                  restaurant: item,
-                });
-              }}
-            >
-              <Spacer position="bottom" size="large">
-                <FadeInView>
-                  <RestaurantInfoCard restaurant={item} />
-                </FadeInView>
-              </Spacer>
-            </TouchableOpacity>
-          );
-        }}
-        keyExtractor={(item) => item.name}
-      />
+      {hasError ? ( // transforms empty object into boolean
+        <Spacer position="left" size="large">
+          <Text variant="error">
+            Oh no! Something went wrong retrieving the data.
+          </Text>
+        </Spacer>
+      ) : (
+        <RestaurantList
+          data={restaurants}
+          renderItem={({ item }) => {
+            return (
+              <TouchableOpacity
+                onPress={() => {
+                  navigation.navigate("RestaurantDetail", {
+                    // adds params
+                    restaurant: item,
+                  });
+                }}
+              >
+                <Spacer position="bottom" size="large">
+                  <FadeInView>
+                    <RestaurantInfoCard restaurant={item} />
+                  </FadeInView>
+                </Spacer>
+              </TouchableOpacity>
+            );
+          }}
+          keyExtractor={(item) => item.name}
+        />
+      )}
     </SafeArea>
   );
 }
