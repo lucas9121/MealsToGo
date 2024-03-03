@@ -36,6 +36,7 @@ export const LocationContextProvider = ({ children }) => {
     try {
       const request = await locationRequest("san francisco");
       handleSearchResult(request);
+      setError(null);
       setIsLoading(false);
       setInitialLoad(false);
       setKeyword("");
@@ -49,6 +50,7 @@ export const LocationContextProvider = ({ children }) => {
       if (initialLoad) return await performInitialLoad();
       if (!keyword.length) return; //end here if no search word
       const request = await locationRequest(keyword.toLowerCase());
+      setError(null);
       handleSearchResult(request);
       setIsLoading(false);
     } catch (error) {
