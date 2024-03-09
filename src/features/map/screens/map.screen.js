@@ -6,11 +6,11 @@ import { LocationContext } from "../../../services/location/location.context";
 import { RestaurantsContext } from "../../../services/restaurants/restaurants.context";
 import { MapCallout } from "../components/map-callout.component";
 
-const Map = styled(MapView)`
+const StyledMap = styled(MapView)`
   flex: 1;
 `;
 
-export const MapScreen = ({ navigation }) => {
+const Map = ({ navigation }) => {
   const { location } = useContext(LocationContext);
   const { restaurants = [] } = useContext(RestaurantsContext);
   const { lat, lng, viewport } = location;
@@ -25,7 +25,7 @@ export const MapScreen = ({ navigation }) => {
   return (
     <>
       <Search />
-      <Map
+      <StyledMap
         region={{
           latitude: lat,
           longitude: lng,
@@ -53,7 +53,22 @@ export const MapScreen = ({ navigation }) => {
             </Marker>
           );
         })}
-      </Map>
+      </StyledMap>
     </>
   );
+};
+
+export const MapScreen = ({ navigation }) => {
+  const { location } = useContext(LocationContext);
+  if (!location || Object.keys(location).length === 0) {
+    return (
+      <StyledMap
+        region={{
+          latitude: 50,
+          longitude: -100,
+        }}
+      />
+    );
+  }
+  return <Map navigation={navigation} />;
 };
