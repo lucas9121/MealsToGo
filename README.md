@@ -23,4 +23,4 @@ Tha maps tab shows all the restaurant in the city you searched for. Clicking on 
 
 ## Settings Tab
 The settings tab lets you access your favorites tab, log out, or change your profile picture. 
-![SettingsTab](/assets/SettingsTab.png)
+![SettingsTab](/assets/SettingsTab.jpeg)
