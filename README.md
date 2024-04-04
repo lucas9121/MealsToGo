@@ -4,7 +4,7 @@ A react native app using expo cli and google maps api. Find restaurants based in
 
 
 ![HomePage1](/assets/HomePage1.jpeg)
-![RestaurantPage](/assets/RestaurantDetail.png)
+![RestaurantPage](/assets/RestaurantDetail.jpeg)
 
 
 To access the app you can either login or register. The account creation and auth is run by firebase. 
